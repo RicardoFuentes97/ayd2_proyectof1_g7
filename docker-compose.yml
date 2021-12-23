@@ -1,0 +1,83 @@
+version: "3.7"
+
+services:
+  serviciousuario:
+    image: ricf97/serviciousuario:latest
+    container_name: serviciousuario
+    
+    depends_on:
+      - midelware
+    ports:
+      - 5000:5000
+    
+  servicioalbum:
+    image: ricf97/servicioalbum:latest
+    container_name: servicioalbum
+    
+    depends_on:
+      - midelware
+    ports:
+      - 5001:5001
+
+  microservicio1:
+    image: ricf97/microscancioncrear:latest
+    container_name: microscancioncrear
+
+    depends_on:
+      - midelware
+    ports:
+      - 9001:9001
+
+  microservicio2:
+    image: ricf97/microscancionget:latest
+    container_name: microscancionget
+
+    depends_on:
+      - midelware
+    ports:
+      - 9002:9002
+    
+  microservicio3:
+    image: ricf97/microscancionupdate:latest
+    container_name: microscancionupdate
+
+    depends_on:
+      - midelware
+    ports:
+      - 9003:9003
+    
+  microservicio4:
+    image: ricf97/microscancioneliminar:latest
+    container_name: microscancioneliminar
+
+    depends_on:
+      - midelware
+    ports:
+      - 9004:9004
+
+  seriviomensajes:
+    image: ricf97/seriviomensajes:latest
+    container_name: seriviomensajes
+    depends_on:
+      - midelware
+    ports:
+      - 9010:9010
+
+
+  #frontend:
+  #  image: ricf97/frontend:latest
+  #  container_name: frontend
+
+  #  depends_on:
+  #    - midelware
+  #  ports:
+  #    - 4200:4200
+
+  midelware:
+    image: ricf97/midelware:latest
+    container_name: midelware 
+    
+    ports:
+    - 2500:2500
+
+  #serviciolog p 6000
